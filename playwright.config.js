@@ -1,9 +1,8 @@
 // @ts-check
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   timeout: 500000,
-
   expect: {
     timeout: 500000,
   },
@@ -19,10 +18,12 @@ export default defineConfig({
     actionTimeout: 500000,
     navigationTimeout: 500000,
 
-    // ✅ SET SCREEN RESOLUTION HERE
-    viewport: { width: 1366, height: 768 },
+    // ✅ REAL MAXIMIZE
+    viewport: null,
+    launchOptions: {
+      args: ['--start-maximized'],
+    },
 
-    // Optional but recommended
     trace: 'on-first-retry',
   },
 
@@ -30,8 +31,7 @@ export default defineConfig({
     {
       name: 'chromium',
       use: {
-        ...devices['Desktop Chrome'],
-        viewport: { width: 1366, height: 768 }, // ✅ explicit per browser
+        browserName: 'chromium',
       },
     },
   ],
