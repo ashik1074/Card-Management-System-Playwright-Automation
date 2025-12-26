@@ -18,6 +18,7 @@ export default defineConfig({
     actionTimeout: 500000,
     navigationTimeout: 500000,
 
+    headless: false, // false = headed, true = headless
     // ✅ REAL MAXIMIZE
     viewport: null,
     launchOptions: {
