@@ -31,27 +31,27 @@ The project is designed so that any team member can **clone the repository and r
 
 ```
 
-project-root/
-│
-├── tests/
-│   └── pages-card-application.spec.js   # Main end-to-end test
-│
-├── pages/
-│   ├── login.page.js                     # Login related actions
-│   ├── cardApp.page1.js                 # Applicant information
-│   ├── cardApp.page2.js                 # Identification & address
-│   ├── cardApp.page3.js                 # Product & bank info
-│   ├── cardApp.page4.js                 # Nominee information
-│   └── submit.page.js                   # Submit application action
-│
-├── utils/
-│   ├── nameGenerator.js                 # Random alphabet-only name generator
-│   └── debug.js                         # Debug / pause helper
-│
-├── playwright.config.js                 # Playwright configuration
-├── package.json
-├── package-lock.json
-└── README.md
+project-root:
+  tests:
+    pages-card-application.spec.js: "Main end-to-end Card Application test"
+  
+  pages:
+    login.page.js: "Login related actions"
+    cardApp.page1.js: "Applicant information page"
+    cardApp.page2.js: "Identification & address page"
+    cardApp.page3.js: "Product & bank information page"
+    cardApp.page4.js: "Nominee information page"
+    submit.page.js: "Submit application action"
+
+  utils:
+    nameGenerator.js: "Random alphabet-only name generator"
+    debug.js: "Debug and conditional pause helper"
+
+  playwright.config.js: "Playwright configuration (Chromium, maximized)"
+  package.json: "Project dependencies and scripts"
+  package-lock.json: "Locked dependency versions"
+  README.md: "Project documentation"
+
 
 ````
 
