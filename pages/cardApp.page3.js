@@ -2,12 +2,6 @@ export async function fillCardAppPage3(page) {
   
 //*******************Unique inputs*********************/ 
   
-  // //Filling Application Reference ID 
-  // await page.locator('#mat-input-160').fill('9328989');
-  // //Filling Reference ID 
-  // await page.locator('#mat-input-162').click();
-  // await page.locator('#mat-input-162').fill('75932485');
-
   // Generate unique numeric suffix
   const uniqueNumber = Date.now().toString().slice(-8);
 
