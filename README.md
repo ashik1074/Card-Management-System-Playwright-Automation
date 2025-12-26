@@ -1,78 +1,94 @@
 
 ---
 
-### ✅ How to download/use it
+## ✅ Full `README.md`
 
-1. Copy everything inside the block below
-2. Create a file named **`README.md`** in your project root
-3. Paste → Save → Commit → Push
-
----
-
-```md
+````md
 # Playwright Automation – Card Application (CMS Portal)
 
-This repository contains **end-to-end UI automation tests** for the **Card Application flow** of the CMS Portal, implemented using **Playwright (JavaScript)** and following the **Page Object Model (POM)** design pattern.
+This repository contains **end-to-end UI automation tests** for the **Card Application flow** of the CMS Portal.  
+The project is built using **Playwright (JavaScript)** and follows the **Page Object Model (POM)** design pattern to ensure maintainability, reusability, and scalability.
 
-The project is designed so that any team member can **clone the repository and run the tests with minimal setup**.
+The goal is to allow any team member to **clone the project and run the tests with minimal setup**.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Playwright** – UI automation framework
-- **JavaScript (ES Modules)** – Test implementation
-- **Chromium** – Browser used for execution
-- **Node.js** – Runtime environment
+- **Playwright** – UI automation framework  
+- **JavaScript (ES Modules)** – Test implementation language  
+- **Chromium** – Target browser  
+- **Node.js (LTS)** – Runtime environment  
 
 ---
 
 ## 📁 Project Structure
 
-```
-
-project-root:
-  tests:
-    pages-card-application.spec.js: "Main end-to-end Card Application test"
-  
-  pages:
-    login.page.js: "Login related actions"
-    cardApp.page1.js: "Applicant information page"
-    cardApp.page2.js: "Identification & address page"
-    cardApp.page3.js: "Product & bank information page"
-    cardApp.page4.js: "Nominee information page"
-    submit.page.js: "Submit application action"
-
-  utils:
-    nameGenerator.js: "Random alphabet-only name generator"
-    debug.js: "Debug and conditional pause helper"
-
-  playwright.config.js: "Playwright configuration (Chromium, maximized)"
-  package.json: "Project dependencies and scripts"
-  package-lock.json: "Locked dependency versions"
-  README.md: "Project documentation"
-
-
+```text
+project-root/
+│
+├── tests/
+│   └── pages-card-application.spec.js
+│       └─ Main end-to-end test that drives the full Card Application flow
+│
+├── pages/
+│   ├── login.page.js
+│   │   └─ Handles login functionality of the CMS Portal
+│   │
+│   ├── cardApp.page1.js
+│   │   └─ Applicant basic information (Step 1 of Card Application)
+│   │
+│   ├── cardApp.page2.js
+│   │   └─ Identification & address information (Step 2)
+│   │
+│   ├── cardApp.page3.js
+│   │   └─ Product & bank information (Step 3)
+│   │
+│   ├── cardApp.page4.js
+│   │   └─ Nominee information (Step 4)
+│   │
+│   └── submit.page.js
+│       └─ Final submit action of the Card Application
+│
+├── utils/
+│   ├── nameGenerator.js
+│   │   └─ Generates random alphabet-only full names for test data
+│   │
+│   └── debug.js
+│       └─ Utility for conditional test pause during debugging
+│
+├── playwright.config.js
+│   └─ Playwright configuration (timeouts, browser, maximize window, etc.)
+│
+├── package.json
+│   └─ Project dependencies, scripts, and Playwright setup
+│
+├── package-lock.json
+│   └─ Dependency lock file for consistent installations
+│
+└── README.md
+    └─ Project documentation
 ````
 
 ---
 
 ## ✅ Prerequisites
 
-Before running the tests, ensure the following is installed:
+Before running the project, ensure the following is installed:
 
-- **Node.js (LTS recommended)**  
-  Download: https://nodejs.org
+* **Node.js (LTS version recommended)**
+  👉 Download: [https://nodejs.org](https://nodejs.org)
 
 ---
 
 ## 🚀 Setup Instructions (First Time Only)
 
 ### 1️⃣ Clone the repository
+
 ```bash
 git clone <repository-url>
 cd <project-folder>
-````
+```
 
 ### 2️⃣ Install dependencies
 
@@ -80,7 +96,7 @@ cd <project-folder>
 npm install
 ```
 
-> ℹ️ During installation, **Chromium browser will be downloaded automatically** using Playwright’s `postinstall` script.
+> ℹ️ During `npm install`, **Chromium browser will be downloaded automatically** using Playwright’s `postinstall` script.
 > No manual browser installation is required.
 
 ---
@@ -104,43 +120,51 @@ npm run test:headed
 ## 🖥 Browser Configuration
 
 * Only **Chromium** browser is used
-* Browser window opens in **maximized mode**
+* Browser launches in **maximized mode**
 * Firefox and WebKit are intentionally excluded
 
-This configuration is handled in `playwright.config.js`.
+All browser-related configuration is managed inside `playwright.config.js`.
 
 ---
 
 ## 🧩 Page Object Model (POM)
 
-Each page or step of the Card Application flow is separated into individual files under the `pages/` directory.
+This project follows the **Page Object Model (POM)** approach.
 
-### Benefits:
+### Why POM?
 
-* Clean and maintainable code
+* Cleaner test code
+* Easy maintenance when UI changes
 * Reusable page actions
-* Easy debugging
-* Ability to run partial flows (e.g., Page 1 → Page 2 only)
+* Supports partial execution (e.g., Page 1 → Page 2 only)
+
+Each page of the Card Application flow is implemented as a **separate module** under the `pages/` directory.
 
 ---
 
 ## 🎲 Test Data Handling
 
-### Random Name Generation
+### Random Full Name Generation
 
-* Full names are generated dynamically using `utils/nameGenerator.js`
+* Test data such as **Full Name** is generated dynamically
 * Ensures:
 
   * Alphabet-only values
   * High uniqueness
-  * Suitable for frequent executions
+  * Safe for frequent executions
 
 Example generated values:
 
-```
+```text
 Ashik RahmanXQd
 Sara KhanAbZ
 John SmithPRe
+```
+
+Implementation can be found in:
+
+```
+utils/nameGenerator.js
 ```
 
 ---
@@ -153,13 +177,13 @@ John SmithPRe
 await page.pause();
 ```
 
-### Conditional pause (recommended)
+### Conditional pause (recommended for debugging)
 
 ```js
 await pauseIfDebug(page);
 ```
 
-Run with debug enabled:
+Run with debug mode enabled:
 
 ```bash
 DEBUG=true npm run test:headed
@@ -171,8 +195,8 @@ DEBUG=true npm run test:headed
 
 * ❌ Do NOT commit `node_modules/`
 * ❌ Do NOT commit Playwright browser binaries
-* Browsers are installed **locally per machine** (expected behavior)
-* Credentials should be moved to environment variables for shared usage
+* Browsers are installed **locally per machine**
+* Credentials should be stored using environment variables for shared usage
 
 ---
 
@@ -180,9 +204,11 @@ DEBUG=true npm run test:headed
 
 For a new team member:
 
-1. Clone the repository
-2. Run `npm install`
-3. Run `npm test`
+```bash
+git clone <repository-url>
+npm install
+npm test
+```
 
 That’s it ✅
 No additional setup required.
@@ -193,19 +219,19 @@ No additional setup required.
 
 * Page Object Model (POM)
 * Chromium-only execution
-* Alphabet-safe random test data
-* Debug-friendly setup
-* CI-ready structure
+* Alphabet-safe dynamic test data
+* Debug-friendly configuration
+* CI-ready project structure
 
 ---
 
 ## 📞 Support
 
-If you face any issues:
+If you face any issues while running the project:
 
 * Ensure Node.js is installed correctly
-* Try running tests in headed mode
-* Review Playwright configuration
+* Run tests in headed mode to debug UI issues
+* Review `playwright.config.js`
 * Contact the project maintainer
 
 ---
@@ -214,7 +240,6 @@ Happy Testing 🚀
 
 ```
 
+---
 
-
-Just tell me 👍
 ```
