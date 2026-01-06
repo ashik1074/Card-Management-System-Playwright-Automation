@@ -34,8 +34,12 @@ export async function fillCardAppPage3(page) {
   await page.locator('#mat-input-160').click();
   
   //Date selection
+
   await page.getByRole('button', { name: 'Open calendar' }).click();
-  await page.getByRole('button', { name: 'December 16,' }).click();
+  await page.getByRole('button', { name: 'Choose month and year' }).click();
+  await page.getByRole('button', { name: '2024' }).click();
+  await page.getByRole('button', { name: 'May' }).click();
+  await page.getByRole('button', { name: 'May 2,' }).click();
   
     //Filling role
   await page.getByRole('textbox', { name: 'Enter Role' }).click();

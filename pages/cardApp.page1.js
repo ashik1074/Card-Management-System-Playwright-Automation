@@ -1,8 +1,9 @@
 export async function fillCardAppPage1(page) {
-  await page.getByText('Card Application', { exact: true }).click();
-  await page.getByRole('link', { name: 'Application List' }).click();
-  await page.getByRole('link', { name: ' Create Card Application' }).click();
-
+  //await page.goto('http://cms-portal-01.konasl.net:10443/card-apps/app/list');
+  // await page.getByText('Card Application', { exact: true }).click();
+  // await page.getByRole('link', { name: 'Application List' }).click();
+  await page.getByRole('link', { name: 'Create Card Application' }).click();
+  // await page.getByRole('link', { name: ' Create Card Application' }).click();
   await page.locator('#mat-select-5').click();
   await page.getByRole('option', { name: 'Ms' }).click();
   
@@ -42,19 +43,28 @@ export async function fillCardAppPage1(page) {
   await page.getByRole('textbox', { name: "Enter Mother's Name" }).fill('Testing');
 
   await page.getByRole('textbox', { name: 'Enter Occupation' }).fill('Intern');
-  await page.getByRole('textbox', { name: 'Enter Personal Contact Number' }).fill('01789833786');
+  
+  //'Enter Personal Contact Number'
+  await page
+  .getByPlaceholder('Enter Number')
+  .nth(0)              // choose the correct index
+  .fill('17236173');
 
+
+  
   await page.getByRole('button', { name: 'Open calendar' }).click();
   await page.getByRole('button', { name: 'Choose month and year' }).click();
-  await page.getByRole('button', { name: '2002' }).click();
+  await page.getByRole('button', { name: '2003' }).click();
   await page.getByRole('button', { name: 'January' }).click();
-  await page.getByRole('button', { name: 'January 1,' }).click();
+  await page.getByRole('button', { name: 'January 6,' }).click();
+
+   // await page.pause();
 
   await page.locator('#mat-select-value-6').click();
   await page.getByRole('option', { name: 'Male', exact: true }).click();
   
-  await page.getByRole('textbox', { name: 'Select Nationality' }).click();
-  await page.getByRole('textbox', { name: 'Select Nationality' }).fill('demo');
+  await page.getByRole('textbox', { name: 'Enter Nationality' }).click();
+  await page.getByRole('textbox', { name: 'Enter Nationality' }).fill('demo');
   
   await page.locator('#mat-select-value-7').click();
   await page.getByText('Single').click();
@@ -62,8 +72,12 @@ export async function fillCardAppPage1(page) {
   await page.locator('div').filter({ hasText: /^Select Religion$/ }).nth(2).click();
   await page.getByRole('option', { name: 'Islam' }).click();
   
-  await page.getByRole('textbox', { name: 'Enter Emergency Contact Number' }).click();
-  await page.getByRole('textbox', { name: 'Enter Emergency Contact Number' }).fill('234242342');
+  // await page.getByRole('textbox', { name: 'Enter Emergency Contact Number' }).click();
+  // await page.getByRole('textbox', { name: 'Enter Emergency Contact Number' }).fill('234242342');
+    await page
+  .getByPlaceholder('Enter Number')
+  .nth(1)              // choose the correct index
+  .fill('17236173');
   
   await page.getByRole('textbox', { name: 'Enter Email' }).click();
   await page.getByRole('textbox', { name: 'Enter Email' }).fill('aa@gg.com');

@@ -15,18 +15,19 @@ export async function fillCardAppPage4(page) {
   await page.getByRole('textbox', { name: 'Enter Father\'s Name' }).press('Tab');
   await page.getByRole('textbox', { name: 'Enter Mother\'s Name' }).fill('ashikur mother');
 
-  //Date of birth selection
+  //Date selection
+
   await page.getByRole('button', { name: 'Open calendar' }).click();
   await page.getByRole('button', { name: 'Choose month and year' }).click();
-  await page.getByRole('button', { name: '2002' }).click();
-  await page.getByRole('button', { name: 'February' }).click();
-  await page.getByRole('button', { name: 'February 4,' }).click();
+  await page.getByRole('button', { name: '2004' }).click();
+  await page.getByRole('button', { name: 'May' }).click();
+  await page.getByRole('button', { name: 'May 2,' }).click();
   //Gender
   await page.locator('#mat-select-value-96').click();
   await page.getByRole('option', { name: 'Male', exact: true }).click();
   //Nationality selection
-  await page.getByRole('textbox', { name: 'Select Nationality' }).click();
-  await page.getByRole('textbox', { name: 'Select Nationality' }).fill('bengali');
+  await page.getByRole('textbox', { name: 'Enter Nationality' }).click();
+  await page.getByRole('textbox', { name: 'Enter Nationality' }).fill('bengali');
   //Relation selection
   await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(10) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
   await page.getByRole('option', { name: 'Spouse' }).click();

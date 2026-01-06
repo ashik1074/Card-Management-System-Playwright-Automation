@@ -18,9 +18,10 @@ test('Card Application End-to-End', async ({ page }) => {
   //To Pause the test for debugging, place it after the function where needed.  
   //                     ↓
   //                     ↓
-  //           await pauseHere();  
+  //           await page.pause();  
   
   await login(page); //Login to the CMS Portal
+  //await page.pause();
   await fillCardAppPage1(page); //Applicant Details of Card Application
   await fillCardAppPage2(page); //Identification & Address of Card Application
   await fillCardAppPage3(page); //Product & Bank Information of Card Application
