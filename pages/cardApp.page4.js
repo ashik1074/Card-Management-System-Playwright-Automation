@@ -1,7 +1,9 @@
 export async function fillCardAppPage4(page) {
+  //Photo ID selection and filling ID number
   await page.getByLabel('Nominee Information').getByText('Select Photo ID Type').click();
   await page.getByRole('option', { name: 'National ID' }).click();
-  await page.getByRole('textbox', { name: 'Enter Photo ID Number' }).click();
+  //Enter Photo ID Number
+  await page.getByRole('textbox', { name: 'Enter Photo ID Number' }).click(); 
   await page.getByRole('textbox', { name: 'Enter Photo ID Number' }).fill('7478474744');
  //Nominee Details
   await page.locator('#mat-select-value-95').click();
@@ -16,7 +18,6 @@ export async function fillCardAppPage4(page) {
   await page.getByRole('textbox', { name: 'Enter Mother\'s Name' }).fill('ashikur mother');
 
   //Date selection
-
   await page.getByRole('button', { name: 'Open calendar' }).click();
   await page.getByRole('button', { name: 'Choose month and year' }).click();
   await page.getByRole('button', { name: '2004' }).click();
@@ -47,7 +48,5 @@ export async function fillCardAppPage4(page) {
   //Proceeding to next step
   await page.getByRole('button', { name: 'Next Step' }).click();
 
-  
-  //await page.pause();
-  // NO submit here
+  //>>>>>>>>>>>>>>>> NO submit here<<<<<<<<<<<<<<<<<<<<<<<<<
 }

@@ -1,13 +1,11 @@
+import { applyZoom } from '../utils/zoomHelper';
+import { clearOverlays, waitForUiStable } from '../utils/uiHelper'; 
+
 export async function fillCardAppPage1(page) {
-  //await page.goto('http://cms-portal-01.konasl.net:10443/card-apps/app/list');
-  // await page.getByText('Card Application', { exact: true }).click();
-  // await page.getByRole('link', { name: 'Application List' }).click();
+
   await page.getByRole('link', { name: 'Create Card Application' }).click();
-  // await page.getByRole('link', { name: ' Create Card Application' }).click();
   await page.locator('#mat-select-5').click();
   await page.getByRole('option', { name: 'Ms' }).click();
-  
-  //await page.getByRole('textbox', { name: 'Enter Full Name' }).fill('Demo'); 
   
   /***************** Random Client name will be generated from here**************/  
     function getRandomFullName() {
@@ -39,10 +37,9 @@ export async function fillCardAppPage1(page) {
 
   /***************** Random Client name generated**************/
   
-  await page.getByRole('textbox', { name: "Enter Father's Name" }).fill('Test');
-  await page.getByRole('textbox', { name: "Enter Mother's Name" }).fill('Testing');
-
-  await page.getByRole('textbox', { name: 'Enter Occupation' }).fill('Intern');
+  await page.getByRole('textbox', { name: "Enter Father's Name" }).fill('Test'); //'Enter Father's Name'
+  await page.getByRole('textbox', { name: "Enter Mother's Name" }).fill('Testing'); //'Enter Mother's Name'
+  await page.getByRole('textbox', { name: 'Enter Occupation' }).fill('Intern'); //'Enter Occupation'
   
   //'Enter Personal Contact Number'
   await page
@@ -51,39 +48,35 @@ export async function fillCardAppPage1(page) {
   .fill('17236173');
 
 
-  
+  //Date of Birth selection
   await page.getByRole('button', { name: 'Open calendar' }).click();
   await page.getByRole('button', { name: 'Choose month and year' }).click();
   await page.getByRole('button', { name: '2003' }).click();
   await page.getByRole('button', { name: 'January' }).click();
   await page.getByRole('button', { name: 'January 6,' }).click();
 
-   // await page.pause();
+  await page.locator('#mat-select-value-6').click(); //Gender
+  await page.getByRole('option', { name: 'Male', exact: true }).click(); //Selecting
 
-  await page.locator('#mat-select-value-6').click();
-  await page.getByRole('option', { name: 'Male', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Enter Nationality' }).click(); //Enter Nationality
+  await page.getByRole('textbox', { name: 'Enter Nationality' }).fill('Bangladeshi'); //Filling National
   
-  await page.getByRole('textbox', { name: 'Enter Nationality' }).click();
-  await page.getByRole('textbox', { name: 'Enter Nationality' }).fill('demo');
+  await page.locator('#mat-select-value-7').click(); //Marital Status
+  await page.getByText('Single').click(); //Selecting
   
-  await page.locator('#mat-select-value-7').click();
-  await page.getByText('Single').click();
-  
-  await page.locator('div').filter({ hasText: /^Select Religion$/ }).nth(2).click();
-  await page.getByRole('option', { name: 'Islam' }).click();
-  
-  // await page.getByRole('textbox', { name: 'Enter Emergency Contact Number' }).click();
-  // await page.getByRole('textbox', { name: 'Enter Emergency Contact Number' }).fill('234242342');
+  await page.locator('div').filter({ hasText: /^Select Religion$/ }).nth(2).click(); //Religion
+  await page.getByRole('option', { name: 'Islam' }).click(); //Selecting
+
+  //Filling emergency Contact Number
     await page
   .getByPlaceholder('Enter Number')
   .nth(1)              // choose the correct index
   .fill('17236173');
   
-  await page.getByRole('textbox', { name: 'Enter Email' }).click();
-  await page.getByRole('textbox', { name: 'Enter Email' }).fill('aa@gg.com');
+  await page.getByRole('textbox', { name: 'Enter Email' }).click(); //Email
+  await page.getByRole('textbox', { name: 'Enter Email' }).fill('aa@gg.com'); //Filling Email
 
-  await page.getByRole('checkbox', { name: 'Same as Email' }).check();
-  await page.getByRole('button', { name: 'Next Step' }).click();
-
+  await page.getByRole('checkbox', { name: 'Same as Email' }).check(); //Checkbox selection for communication email
+  await page.getByRole('button', { name: 'Next Step' }).click(); //Proceeding to next step
 
 }

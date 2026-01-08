@@ -1,3 +1,6 @@
+// Import test data
+import { cardApplicationData } from '../test-data/card-application-data';
+
 export async function fillCardAppPage3(page) {
   
 //*******************Unique inputs*********************/ 
@@ -16,12 +19,24 @@ export async function fillCardAppPage3(page) {
   
 
   
-  //Product selection
-  await page.locator('#mat-select-value-61').click();
-  await page.getByRole('option', { name: 'NewProduct' }).click();
-  //Scheme selection
-  await page.locator('#mat-select-value-62').click();
-  await page.getByRole('option', { name: 'MASTERCARD' }).click();
+  // //Product selection
+  // await page.locator('#mat-select-value-61').click();
+  // await page.getByRole('option', { name: 'NewProduct' }).click();
+  // //Scheme selection
+  // await page.locator('#mat-select-value-62').click();
+  // await page.getByRole('option', { name: 'MASTERCARD' }).click();
+
+
+    await page.locator('#mat-select-value-61').click(); // open Product dropdown
+    await page.getByRole('option', {
+    name: cardApplicationData.productAndScheme.productName, // read from test data
+  }).click(); // select product
+
+  await page.locator('#mat-select-value-62').click(); // open Scheme dropdown
+  await page.getByRole('option', {
+    name: cardApplicationData.productAndScheme.schemeName, // read from test data
+  }).click(); // select scheme
+
   //Filling embossing name
   await page.getByRole('textbox', { name: 'Enter Embossing Name' }).click();
   await page.getByRole('textbox', { name: 'Enter Embossing Name' }).fill('EMBOSS ');
@@ -34,7 +49,6 @@ export async function fillCardAppPage3(page) {
   await page.locator('#mat-input-160').click();
   
   //Date selection
-
   await page.getByRole('button', { name: 'Open calendar' }).click();
   await page.getByRole('button', { name: 'Choose month and year' }).click();
   await page.getByRole('button', { name: '2024' }).click();
@@ -46,6 +60,5 @@ export async function fillCardAppPage3(page) {
   await page.getByRole('textbox', { name: 'Enter Role' }).fill('demo role');
   //Proceeding to next step
   await page.getByRole('button', { name: 'Next Step' }).click();
-
 
 }
