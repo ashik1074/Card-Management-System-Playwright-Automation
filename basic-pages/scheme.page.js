@@ -8,7 +8,7 @@ export async function createScheme(page) {
   await applyZoom(page); // Apply 70% zoom
   await page.getByText('System Configuration').click();
   await page.getByRole('link', { name: 'Scheme Setup' }).click();
-  await page.getByRole('button', { name: ' Set Up Scheme' }).click();
+  await page.getByRole('button', { name: 'Set Up Scheme' }).click();
 
   //await page.locator('#mat-select-value-2').click();
   //await page.getByRole('option', { name: 'metronic Visa U.S.A Inc. V001' }).click();

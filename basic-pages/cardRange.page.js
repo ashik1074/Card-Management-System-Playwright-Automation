@@ -10,10 +10,10 @@ export async function createCardRange(page) {
   await page.getByText('Product Management').click();
   await page.getByRole('link', { name: 'Card Range Setup' }).click();
 
-    await page.getByRole('button', { name: ' Set Card Range' }).waitFor({ state: 'visible', timeout: 60000 });
+    await page.getByRole('button', { name: 'Set Card Range' }).waitFor({ state: 'visible', timeout: 60000 });
     // ✅ Assert the Card Range Setup page is really open (prevents “stuck”)
 
-  await page.getByRole('button', { name: ' Set Card Range' }).click();
+  await page.getByRole('button', { name: 'Set Card Range' }).click();
   await page.getByRole('textbox', { name: 'Enter Range Name' }).fill('aaa');
 
   await page.locator('mat-select[placeholder="Select BIN"]').click();

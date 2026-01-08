@@ -37,6 +37,7 @@ export async function fillCardAppPage3(page) {
     name: cardApplicationData.productAndScheme.schemeName, // read from test data
   }).click(); // select scheme
 
+
   //Filling embossing name
   await page.getByRole('textbox', { name: 'Enter Embossing Name' }).click();
   await page.getByRole('textbox', { name: 'Enter Embossing Name' }).fill('EMBOSS ');

@@ -4,13 +4,13 @@ import { applyZoom } from '../utils/zoomHelper';
 export async function login(page) {
     await applyZoom(page); // Apply 70% zoom
 
-  await page.goto('http://banking-cms-123.konasl.net:10443/auth/login');
+  await page.goto('http://cms-portal-01.konasl.net:10443/card-apps/app/list');
 
   await page.getByRole('textbox', { name: 'Enter Email' })
-    .fill('banking-cms-123@yopmail.com');
+    .fill('ashik1074@yopmail.com');
 
   await page.getByRole('textbox', { name: 'Enter Password' })
-    .fill('Konasl@@12');
+    .fill('Ashik@123');
 
   await page.getByRole('button', { name: 'Log In' }).click();
 }

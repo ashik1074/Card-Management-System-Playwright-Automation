@@ -3,8 +3,14 @@
 export const cardApplicationData = {
 
   productAndScheme: {
-    productName: 'NewProduct',   // 👈 Product to be selected
-    schemeName: 'MASTERCARD',    // 👈 Scheme to be selected
+    productName: 'Arekta Product',   // 👈 Product to be selected
+    schemeName: 'VISA',    // 👈 Scheme to be selected
   },
 
 };
+
+//   Other Scheme Options: 
+//                 - MASTERCARD
+//                 - VISA 
+//                 - UNION_PAY 
+//                 - AMEX

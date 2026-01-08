@@ -9,12 +9,12 @@ export async function createBIN(page) {
   await page.getByText('Product Management').click();
   await page.getByRole('link', { name: 'BIN Setup' }).click();
 
-  await page.getByRole('button', { name: ' Set BIN' }).waitFor({ state: 'visible', timeout: 60000 });
+  await page.getByRole('button', { name: 'Set BIN' }).waitFor({ state: 'visible', timeout: 60000 });
 
     // ✅ Assert the BIN Setup page is really open (prevents “stuck”)
   await applyZoom(page); // Apply 70% zoom
 
-  await page.getByRole('button', { name: ' Set BIN' }).click();
+  await page.getByRole('button', { name: 'Set BIN' }).click();
   await page.locator('mat-select[placeholder="Select Scheme"]').click();
   await page.getByRole('option', { name: 'scheme Visa U.S.A Inc.' }).click();
   await page.locator('mat-select[placeholder="Select Country Code"]').click();
