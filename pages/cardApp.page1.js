@@ -74,7 +74,7 @@ export async function fillCardAppPage1(page) {
   .fill('17236173');
   
   await page.getByRole('textbox', { name: 'Enter Email' }).click(); //Email
-  await page.getByRole('textbox', { name: 'Enter Email' }).fill('aa@gg.com'); //Filling Email
+  await page.getByRole('textbox', { name: 'Enter Email' }).fill('jayed_email@yopmail.com'); //Filling Email
 
   await page.getByRole('checkbox', { name: 'Same as Email' }).check(); //Checkbox selection for communication email
   await page.getByRole('button', { name: 'Next Step' }).click(); //Proceeding to next step

@@ -1,11 +1,16 @@
+import { generateRandomIdNumber } from '../test-data/test.data.js';
 export async function fillCardAppPage2(page) {
     //National ID selection
   await page.locator('#mat-select-37').click();
-  await page.getByRole('option', { name: 'National ID' }).click();
+  await page.getByRole('option', { name: ' Passport ' }).click();
 
   //Filling ID number
-  await page.getByRole('textbox', { name: 'Enter ID Number' })
-    .fill('7808257443');
+const randomIdNumber = generateRandomIdNumber(10);
+
+// Fill the ID Number field
+await page
+  .getByRole('textbox', { name: 'Enter ID Number' }) // locate field
+  .fill(randomIdNumber); 
 
     //Address details
   await page.locator('#mat-select-value-38').click();

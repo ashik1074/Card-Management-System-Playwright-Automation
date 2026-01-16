@@ -3,8 +3,8 @@
 export const cardApplicationData = {
 
   productAndScheme: {
-    productName: 'Arekta Product',   // 👈 Product to be selected
-    schemeName: 'VISA',    // 👈 Scheme to be selected
+    productName: ' 07 January 2026 Product Launch ',   // 👈 Product to be selected
+    schemeName: 'UNION_PAY',    // 👈 Scheme to be selected
   },
 
 };
@@ -12,5 +12,11 @@ export const cardApplicationData = {
 //   Other Scheme Options: 
 //                 - MASTERCARD
 //                 - VISA 
-//                 - UNION_PAY 
+//                 - UNION_PAY
 //                 - AMEX
+
+
+//Other Product Options:
+//                 - NewProduct
+//                 - Arekta Product
+//                 - January 2026 Product Launch

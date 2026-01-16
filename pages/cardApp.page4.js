@@ -1,10 +1,19 @@
+import { generateRandomIdNumber } from '../test-data/test.data.js';
+
 export async function fillCardAppPage4(page) {
   //Photo ID selection and filling ID number
   await page.getByLabel('Nominee Information').getByText('Select Photo ID Type').click();
-  await page.getByRole('option', { name: 'National ID' }).click();
+  await page.getByRole('option', { name: ' Passport ' }).click();
   //Enter Photo ID Number
   await page.getByRole('textbox', { name: 'Enter Photo ID Number' }).click(); 
-  await page.getByRole('textbox', { name: 'Enter Photo ID Number' }).fill('7478474744');
+   
+  //Filling ID number
+  const randomIdNumber2 = generateRandomIdNumber(10);
+
+  // Fill the ID Number field
+  await page
+    .getByRole('textbox', { name: 'Enter ID Number' }) // locate field
+    .fill(randomIdNumber2); 
  //Nominee Details
   await page.locator('#mat-select-value-95').click();
   await page.getByRole('option', { name: 'Mr', exact: true }).click();
