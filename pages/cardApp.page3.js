@@ -1,65 +1,80 @@
-// Import test data
+// pages/cardApp.page3.js
+
+import { expect } from '@playwright/test';
 import { cardApplicationData } from '../test-data/card-application-data';
 
 export async function fillCardAppPage3(page) {
-  
-//*******************Unique inputs*********************/ 
-  
-  // Generate unique numeric suffix
-  const uniqueNumber = Date.now().toString().slice(-8);
+  // ✅ Scope everything to Page 3 so duplicate placeholders in other steps don’t conflict
+  const page3 = page.locator('#cdk-stepper-0-content-2');
+  await page3.waitFor({ state: 'visible', timeout: 60000 }); // wait until Page 3 is active
 
-  // Application Reference ID
-  await page.locator('#mat-input-160').fill(uniqueNumber);
+  //******************* Unique inputs (serialized by index) *********************/
 
-  // Reference ID (slightly different)
-  await page.locator('#mat-input-162').fill((Number(uniqueNumber) + 1).toString());
+  const referenceIdInputs = page3.locator('input[placeholder="Enter Reference ID"]');
+  await expect(referenceIdInputs).toHaveCount(2);
 
-  
-//*******************Unique inputs*********************/ 
-  
+  await referenceIdInputs
+    .nth(0)
+    .fill(cardApplicationData.references.applicationReferenceId); // random each run
 
-  
-  // //Product selection
-  // await page.locator('#mat-select-value-61').click();
-  // await page.getByRole('option', { name: 'NewProduct' }).click();
-  // //Scheme selection
-  // await page.locator('#mat-select-value-62').click();
-  // await page.getByRole('option', { name: 'MASTERCARD' }).click();
+  await referenceIdInputs
+    .nth(1)
+    .fill(cardApplicationData.references.referenceId); // random each run
+
+  //******************* Product & Scheme selection (Mat-Select overlay-safe) *********************/
+
+  // ✅ Material dropdown options appear in a global overlay (NOT inside page3)
+  const overlay = page.locator('.cdk-overlay-container'); // global overlay container
+
+  // -------- Product selection --------
+  await page3.locator('#mat-select-value-61').click(); // open Product dropdown
+
+  // wait until dropdown options are rendered in overlay
+  await overlay.getByRole('listbox').waitFor({ state: 'visible', timeout: 60000 });
+
+  // click product option from overlay (NOT from page3)
+  await overlay.getByRole('option', {
+    name: cardApplicationData.productAndScheme.productName,
+    exact: true,
+  }).click();
+
+  // -------- Scheme selection --------
+  await page3.locator('#mat-select-value-62').click(); // open Scheme dropdown
+  await overlay.getByRole('listbox').waitFor({ state: 'visible', timeout: 60000 });
+
+  await overlay.getByRole('option', {
+    name: cardApplicationData.productAndScheme.schemeName,
+    exact: true,
+  }).click();
+
+  //******************* Other fields *********************/
+
+  // Filling embossing name
+  await page3.getByRole('textbox', { name: 'Enter Embossing Name' }).fill('EMBOSS ');
+
+  // Filling annual income (radio checks)
+  await page3.locator('#mat-radio-19-input').check();
+  await page3.locator('#mat-radio-21-input').check();
+
+  // Branch selection (also a mat-select overlay)
+  await page3.locator('#mat-select-value-63').click();
+  await overlay.getByRole('listbox').waitFor({ state: 'visible', timeout: 60000 });
+  await overlay.getByRole('option', { name: 'Banani Branch', exact: true }).click();
+
+  // (Kept) focus optional input (if required by UI)
+  //await page3.locator('#mat-input-160').click();
 
 
-    await page.locator('#mat-select-value-61').click(); // open Product dropdown
-    await page.getByRole('option', {
-    name: cardApplicationData.productAndScheme.productName, // read from test data
-  }).click(); // select product
-
-  await page.locator('#mat-select-value-62').click(); // open Scheme dropdown
-  await page.getByRole('option', {
-    name: cardApplicationData.productAndScheme.schemeName, // read from test data
-  }).click(); // select scheme
-
-
-  //Filling embossing name
-  await page.getByRole('textbox', { name: 'Enter Embossing Name' }).click();
-  await page.getByRole('textbox', { name: 'Enter Embossing Name' }).fill('EMBOSS ');
-  //Filling annual income
-  await page.locator('#mat-radio-19-input').check();
-  await page.locator('#mat-radio-21-input').check();
-  await page.locator('#mat-select-value-63').click();
-  //Branch selection
-  await page.getByRole('option', { name: 'Dhanmondi Branch' }).click();
-  await page.locator('#mat-input-160').click();
-  
-  //Date selection
-  await page.getByRole('button', { name: 'Open calendar' }).click();
+  // Date selection
+  await page.getByRole('textbox', { name: 'Select Application Date' }).click();
   await page.getByRole('button', { name: 'Choose month and year' }).click();
-  await page.getByRole('button', { name: '2024' }).click();
-  await page.getByRole('button', { name: 'May' }).click();
-  await page.getByRole('button', { name: 'May 2,' }).click();
-  
-    //Filling role
-  await page.getByRole('textbox', { name: 'Enter Role' }).click();
-  await page.getByRole('textbox', { name: 'Enter Role' }).fill('demo role');
-  //Proceeding to next step
-  await page.getByRole('button', { name: 'Next Step' }).click();
+  await page.getByRole('button', { name: '2025' }).click();
+  await page.getByRole('button', { name: 'December' }).click();
+  await page.getByRole('button', { name: 'December 1,' }).click();
 
+  // Filling role
+  await page3.getByRole('textbox', { name: 'Enter Role' }).fill('demo role');
+
+  // Proceeding to next step
+  await page3.getByRole('button', { name: 'Next Step' }).click();
 }

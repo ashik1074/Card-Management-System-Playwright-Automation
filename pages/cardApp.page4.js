@@ -5,14 +5,14 @@ export async function fillCardAppPage4(page) {
   await page.getByLabel('Nominee Information').getByText('Select Photo ID Type').click();
   await page.getByRole('option', { name: ' Passport ' }).click();
   //Enter Photo ID Number
-  await page.getByRole('textbox', { name: 'Enter Photo ID Number' }).click(); 
+  //await page.getByRole('textbox', { name: 'Enter Photo ID Number' }).click(); 
    
   //Filling ID number
   const randomIdNumber2 = generateRandomIdNumber(10);
 
   // Fill the ID Number field
   await page
-    .getByRole('textbox', { name: 'Enter ID Number' }) // locate field
+    .getByRole('textbox', { name: 'Enter Photo ID Number' }) // locate field
     .fill(randomIdNumber2); 
  //Nominee Details
   await page.locator('#mat-select-value-95').click();
