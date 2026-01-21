@@ -44,5 +44,5 @@ export async function createCardRange(page) {
   await page.getByPlaceholder('Enter Value').nth(1).fill(cardRangeData.maxValue); // range end
 
   await page.getByRole('button', { name: 'Next' }).click(); // go next
-  await page.getByRole('button', { name: 'Submit' }).click(); // submit card range
+  await page.getByRole('button', { name: 'Submit' }).click(); // submit card range 
 }
