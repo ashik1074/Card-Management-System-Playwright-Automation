@@ -16,16 +16,15 @@ test('Scheme → BIN → Card Range creation & approval', async ({ page }) => {
   //           await page.pause();
 
   await login(page);               // Login
-  // await createScheme(page);        // Create Scheme
-  // await approveScheme(page);       // Approve Scheme
+  await createScheme(page);        // Create Scheme
+  await approveScheme(page);       // Approve Scheme
 
   await createBIN(page);           // Create BIN
-  // await approveBIN(page);          // Approve BIN
-
-  // await createCardRange(page);     // Create Card Range
-  // await approveCardRange(page);    // Approve Card Range
+  await approveBIN(page);          // Approve BIN
+  
+  await createCardRange(page);     // Create Card Range
+  await approveCardRange(page);    // Approve Card Range
 
   await page.pause();              // Debug pause (optional)
-
   
 });

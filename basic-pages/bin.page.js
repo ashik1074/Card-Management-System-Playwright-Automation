@@ -45,9 +45,12 @@ export async function createBIN(page) {
   // Step 2: BIN info
   // -----------------------------
 
-  await page.getByRole('textbox', { name: 'Enter BIN Name' }).fill('Hola BIN'); // enter BIN name
+  await page.getByRole('textbox', { name: 'Enter BIN Name' }).fill(binData.binName); // enter BIN name
   await page.getByPlaceholder('Enter BIN Length').fill('6');                    // enter BIN length
-  await page.getByPlaceholder('Enter BIN Value').fill('456456');                // enter BIN value
+//  await page.getByPlaceholder('Enter BIN Value').fill('456456');                // enter BIN value
+  await page
+    .getByPlaceholder('Enter BIN Value')
+    .fill(binData.binValue);
 
   await page.locator('mat-select[placeholder="Select BIN Type"]').click();      // open BIN Type dropdown
   await page.getByRole('option', { name: binData.binType }).click();            // ✅ BIN type from test data
