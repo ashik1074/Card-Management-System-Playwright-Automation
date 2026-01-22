@@ -1,0 +1,60 @@
+import { test, expect } from '@playwright/test';
+
+test('Product Creation', async ({ page }) => {
+  await page.goto('http://banking-cms-123.konasl.net:10443/card-product/products/list');
+  await page.getByRole('textbox', { name: 'Enter Email' }).click();
+  await page.getByRole('textbox', { name: 'Enter Email' }).fill('banking-cms-123@yopmail.com');
+  await page.getByRole('textbox', { name: 'Enter Password' }).click();
+  await page.getByRole('textbox', { name: 'Enter Password' }).fill('Abc@1234');
+  await page.getByRole('checkbox', { name: 'Remember Me' }).check();
+  await page.getByRole('button', { name: 'Log In' }).click();
+  await page.getByRole('button', { name: 'Set Product' }).click();
+
+   await page.getByRole('textbox', { name: 'Enter Product Name' }).click();
+  await page.getByRole('textbox', { name: 'Enter Product Name' }).fill('Bhola product');
+  await page.getByRole('textbox', { name: 'Enter Description' }).click();
+  await page.getByLabel('Product Basic').getByText('Select Market Segment').click();
+  await page.getByRole('option', { name: 'Consumer' }).click();
+  await page.getByLabel('Product Basic').getByText('Select Currency').click();
+  await page.getByRole('option', { name: 'currency EUR Austria' }).click();
+  await page.getByLabel('Product Basic').getByText('Select Product Type').click();
+  await page.getByRole('option', { name: 'Credit' }).click();
+  await page.getByRole('button', { name: 'Open calendar' }).click();
+  await page.getByRole('button', { name: 'Choose month and year' }).click();
+  await page.getByRole('button', { name: '2027' }).click();
+  await page.getByRole('button', { name: 'December' }).click();
+  await page.getByRole('button', { name: 'December 31,' }).click();
+  await page.locator('#mat-radio-1-input').check();
+  await page.getByLabel('Product Basic').getByText('Select how this card will be').click();
+  await page.getByRole('option', { name: 'Both' }).click();
+  await page.getByRole('tabpanel', { name: 'Product Basic' }).getByPlaceholder('Enter Card Validity Duration').click();
+  await page.getByRole('tabpanel', { name: 'Product Basic' }).getByPlaceholder('Enter Card Validity Duration').fill('24');
+  await page.locator('#mat-radio-5').getByText('No').click();
+  await page.getByRole('button', { name: 'Next Step' }).click();
+  await page.getByRole('tabpanel', { name: 'Policies' }).getByPlaceholder('Choose PIN Policy').click();
+  await page.getByRole('option', { name: 'policy1' }).click();
+  await page.getByLabel('Policies').getByRole('button', { name: 'Add Policy' }).click();
+  await page.getByRole('button', { name: 'NFC Control' }).click();
+  await page.getByRole('radio', { name: 'No' }).check();
+  await page.getByRole('button', { name: 'Next Step' }).click();
+  await page.locator('#cdk-stepper-0-content-2 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > .form-section > formly-field > ksl-field-group-repeat > .ksl-repeat-container > .ksl-repeat-item > formly-field > .branding-item > formly-field > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper').first().click();
+  await page.getByLabel('Scheme Enrollment').getByText('Select Scheme').click();
+  await page.getByRole('option', { name: 'China UnionPay Co., Ltd.' }).click();
+  await page.getByLabel('Scheme Enrollment').getByText('Select BIN').click();
+  await page.getByRole('option', { name: 'BANK-' }).click();
+  await page.getByLabel('Scheme Enrollment').getByText('Choose Card Range').click();
+  await page.getByRole('option', { name: 'CR-150087-' }).click();
+  await page.getByRole('button', { name: 'Next Step' }).click();
+  await page.getByRole('button', { name: 'Next Step' }).click();
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByText('Approval Management').click();
+  await page.getByRole('link', { name: 'Task Panel' }).click();
+  await page.getByRole('textbox', { name: 'Search by Event' }).click();
+  await page.getByRole('textbox', { name: 'Search by Event' }).fill('Product Creation');
+  await page.getByRole('textbox', { name: 'Search by Event' }).press('Enter');
+  await page.getByRole('cell', { name: 'Product Creation' }).click();
+  await page.getByRole('button', { name: 'Approve' }).click();
+  await page.getByRole('button', { name: 'Yes, Approve!' }).click();
+
+  await page.pause(); // Debug pause (optional)
+});

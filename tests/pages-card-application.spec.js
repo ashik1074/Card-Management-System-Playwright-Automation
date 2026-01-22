@@ -15,15 +15,17 @@ test('Card Application End-to-End', async ({ page }) => {
     await page.pause();
   };
 
-  //To Pause the test for debugging, place it after the function where needed.  
-  //                     ↓
-  //                     ↓
-  //           await page.pause();  
-  
-  await login(page); //Login to the CMS Portal
+  await login(page); // ✅ automatically uses activeEnvKey from test data
   await fillCardAppPage1(page); //Applicant Details of Card Application
   await fillCardAppPage2(page); //Identification & Address of Card Application
   await fillCardAppPage3(page); //Product & Bank Information of Card Application
   await fillCardAppPage4(page); //Nominee Information of Card Application
   await submitApplication(page); //Preview and Submit the Card Application
+
+
+  //To Pause the test for debugging, place it after the function where needed.  
+  //                     ↓
+  //           await page.pause();  
+
+
 });

@@ -1,52 +1,26 @@
+// policy-pages/auth.page.js
+import { environments, runConfig } from '../test-data/environments.data.js';
+
 export async function login(page) {
+  const envKey = runConfig.activeEnvKey; // ✅ reads which ASP to use
+  const env = environments[envKey];
 
+  if (!env) {
+    throw new Error(
+      `❌ Unknown activeEnvKey "${envKey}". Valid options: ${Object.keys(environments).join(', ')}`
+    );
+  }
 
-  await page.goto('http://cms-portal-01.konasl.net:10443/card-apps/app/list');
+  const targetUrl = `${env.baseUrl}/card-apps/app/list`; // ✅ app URL (will redirect to login if not logged in)
 
-  await page.getByRole('textbox', { name: 'Enter Email' })
-    .fill('ashik1074@yopmail.com');
+  await page.goto(targetUrl, { waitUntil: 'domcontentloaded' }); // open page
 
-  await page.getByRole('textbox', { name: 'Enter Password' })
-    .fill('Ashik@123');
+  // ✅ Fill login form
+  await page.getByRole('textbox', { name: 'Enter Email' }).fill(env.email);
+  await page.getByRole('textbox', { name: 'Enter Password' }).fill(env.password);
 
-  await page.getByRole('button', { name: 'Log In' }).click();
+  await page.getByRole('button', { name: 'Log In' }).click(); // login
 
-
-  // await page.goto('http://asp-portal-qa25.konasl.net:10443/card-apps/app/list');
-
-  // await page.getByRole('textbox', { name: 'Enter Email' })
-  //   .fill('checker25@yopmail.com');
-
-  // await page.getByRole('textbox', { name: 'Enter Password' })
-  //   .fill('Abc@1234');
-
-  // await page.getByRole('button', { name: 'Log In' }).click();
-
-
-  // await page.goto('http://banking-cms-123.konasl.net:10443/card-apps/app/list');
-
-  // await page.getByRole('textbox', { name: 'Enter Email' })
-  //   .fill('banking-cms-123@yopmail.com');
-
-  // await page.getByRole('textbox', { name: 'Enter Password' })
-  //   .fill('Abc@1234');
-
-  // await page.getByRole('button', { name: 'Log In' }).click();
-
-
-  //   await page.goto('http://next-gen-02.konasl.net:10443/card-apps/app/list');
-
-  // await page.getByRole('textbox', { name: 'Enter Email' })
-  //   .fill('next-gen-admin@yopmail.com');
-
-  // await page.getByRole('textbox', { name: 'Enter Password' })
-  //   .fill('Konasl@@1234');
-
-  // await page.getByRole('button', { name: 'Log In' }).click();
-
-
-
+  // Optional: you can wait for something post-login if needed
+  // await page.waitForLoadState('networkidle');
 }
-
-
-//Other 

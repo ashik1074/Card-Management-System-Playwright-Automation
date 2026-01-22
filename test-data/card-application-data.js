@@ -1,4 +1,3 @@
-// test-data/card-application-data.js
 // Centralized test data for Card Application (Product & Scheme info)
 
 // 🔁 Utility function to generate random numeric IDs
@@ -13,8 +12,15 @@ function generateRandomId(length = 10) {
 export const cardApplicationData = {
   // ✅ User changes product + scheme here only
   productAndScheme: {
-    productName: 'Arekta Product', // 👈 Product to be selected from dropdown
-    schemeName: 'VISA',            // 👈 Scheme to be selected from dropdown
+
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>Input only here<<<<<<<<<<<<<<<<<<<<<<<
+    productName: 'Arekta Product', // 👈👈👈👈👈 Product to be selected from dropdown
+    schemeName: 'VISA',            // 👈👈👈👈👈 Scheme to be selected from dropdown
+//>>>>>>>>>>>>>>>>>>>>>>>>Input only here<<<<<<<<<<<<<<<<<<<<<<<
+
+  
   },
 
   // ✅ Random IDs auto-generate on every run

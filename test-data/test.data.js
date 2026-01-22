@@ -2,11 +2,11 @@
 // Centralized test data file
 
 /* =========================================================
-   Scheme Selection
+   Scheme Selection Input Here
    ========================================================= */
 
 export const schemeData = {
-  schemeName: 'metronic American Express Company A000', // 👈👈👈👈👈 USER changes this value only
+  schemeName: 'metronic China UnionPay Co.,', // 👈👈👈👈👈 USER changes this value only
   //Other Options:
   //               - metronic Visa U.S.A Inc. V001
   //               - metronic Mastercard
@@ -17,10 +17,10 @@ export const schemeData = {
 
 // Map full scheme label → short scheme name shown in BIN dropdown (if different)
 const schemeNameMap = {
-  // 'metronic Visa U.S.A Inc. V001': 'Visa U.S.A Inc.',
-  // 'metronic China UnionPay Co.,': 'scheme China UnionPay Co.,',
-  //'metronic Mastercard': 'scheme Mastercard',
-   'metronic American Express Company A000': 'scheme American Express',
+  'metronic Visa U.S.A Inc. V001': 'Visa U.S.A Inc.',
+  'metronic China UnionPay Co.,': 'scheme China UnionPay Co.,',
+  'metronic Mastercard': 'scheme Mastercard',
+  'metronic American Express Company A000': 'scheme American Express',
   // Add more mappings ONLY if your BIN dropdown uses different text
   // 'metronic Mastercard': 'MASTERCARD',
 };
@@ -58,7 +58,7 @@ export function generateRandomCardRangeName() {
 }
 
 /* =========================================================
-   BIN Configuration
+   BIN Configuration Input Here
    ========================================================= */
 
 export const binData = {
@@ -72,7 +72,7 @@ export const binData = {
 };
 
 /* =========================================================
-   Card Range Configuration
+   Card Range Configuration Input Here
    ========================================================= */
 
 export const cardRangeData = {
