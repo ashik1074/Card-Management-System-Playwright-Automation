@@ -16,11 +16,12 @@ export const cardApplicationData = {
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>Input only here<<<<<<<<<<<<<<<<<<<<<<<
-    productName: 'Arekta Product', // 👈👈👈👈👈 Product to be selected from dropdown
-    schemeName: 'VISA',            // 👈👈👈👈👈 Scheme to be selected from dropdown
+    productName: 'D1', // 👈👈👈👈👈 Product to be selected from dropdown
+    schemeName: 'UNION_PAY',            // 👈👈👈👈👈 Scheme to be selected from dropdown
 //>>>>>>>>>>>>>>>>>>>>>>>>Input only here<<<<<<<<<<<<<<<<<<<<<<<
 
-  
+// Sample Scheme Options: MASTERCARD | VISA | UNION_PAY | AMEX
+// Sample Product Options:  NewProduct | Arekta Product | January 2026 Product Launch
   },
 
   // ✅ Random IDs auto-generate on every run
@@ -30,13 +31,3 @@ export const cardApplicationData = {
   },
 };
 
-//   Other Scheme Options:
-//                 - MASTERCARD
-//                 - VISA
-//                 - UNION_PAY
-//                 - AMEX
-
-// Other Product Options:
-//                 - NewProduct
-//                 - Arekta Product
-//                 - January 2026 Product Launch

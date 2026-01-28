@@ -1,7 +1,7 @@
 // basic-pages/cardRange.page.js
 
 import { clearOverlays, waitForUiStable } from '../utils/uiHelper';
-import { binData, cardRangeData } from '../test-data/test.data';
+import { binData, cardRangeData } from '../test-data/schemeBinCardRange.data.js';
 
 export async function createCardRange(page) {
   await clearOverlays(page); // ensure no dialog/backdrop

@@ -1,4 +1,5 @@
-import { generateRandomIdNumber } from '../test-data/test.data.js';
+import { generateRandomIdNumber } from '../test-data/schemeBinCardRange.data.js';
+import { generateRandomFatherName } from '../test-data/randomize.utils.js';
 export async function fillCardAppPage2(page) {
     //National ID selection
   await page.locator('#mat-select-37').click();
@@ -18,10 +19,10 @@ await page
 
   //Filling care of name
   await page.getByRole('textbox', { name: 'Enter Name' }).click();
-  await page.getByRole('textbox', { name: 'Enter Name' }).fill('Care of name');
+  await page.getByRole('textbox', { name: 'Enter Name' }).fill(generateRandomFatherName());
   //Filling address line 1
   await page.getByRole('textbox', { name: 'Enter Address Line 1' }).click();
-  await page.getByRole('textbox', { name: 'Enter Address Line 1' }).fill('address line 1');
+  await page.getByRole('textbox', { name: 'Enter Address Line 1' }).fill('House 45, Maple Avenue');
   //Radio button selection for allowing address for communication
   await page.getByRole('radio', { name: 'Yes' }).check();
 

@@ -2,6 +2,9 @@
 
 import { expect } from '@playwright/test';
 import { cardApplicationData } from '../test-data/card-application-data';
+import { getRandomFullName } from '../test-data/randomize.utils';
+import { get } from 'http';
+
 
 export async function fillCardAppPage3(page) {
   // ✅ Scope everything to Page 3 so duplicate placeholders in other steps don’t conflict
@@ -42,15 +45,17 @@ export async function fillCardAppPage3(page) {
   await page3.locator('#mat-select-value-62').click(); // open Scheme dropdown
   await overlay.getByRole('listbox').waitFor({ state: 'visible', timeout: 60000 });
 
-  await overlay.getByRole('option', {
-    name: cardApplicationData.productAndScheme.schemeName,
-    exact: true,
-  }).click();
+  // await overlay.getByRole('option', {
+  //   name: cardApplicationData.productAndScheme.schemeName,
+  //   exact: true,
+  // }).click();
+
+  await overlay.getByRole('option').first().click();
 
   //******************* Other fields *********************/
 
   // Filling embossing name
-  await page3.getByRole('textbox', { name: 'Enter Embossing Name' }).fill('EMBOSS ');
+  await page3.getByRole('textbox', { name: 'Enter Embossing Name' }).fill(getRandomFullName().toUpperCase());
 
   // Filling annual income (radio checks)
   await page3.locator('#mat-radio-19-input').check();
@@ -62,8 +67,6 @@ export async function fillCardAppPage3(page) {
   await overlay.getByRole('option', { name: 'Banani Branch', exact: true }).click();
 
   // (Kept) focus optional input (if required by UI)
-  //await page3.locator('#mat-input-160').click();
-
 
   // Date selection
   await page.getByRole('textbox', { name: 'Select Application Date' }).click();
@@ -73,7 +76,7 @@ export async function fillCardAppPage3(page) {
   await page.getByRole('button', { name: 'December 1,' }).click();
 
   // Filling role
-  await page3.getByRole('textbox', { name: 'Enter Role' }).fill('demo role');
+  await page3.getByRole('textbox', { name: 'Enter Role' }).fill('Executive');
 
   // Proceeding to next step
   await page3.getByRole('button', { name: 'Next Step' }).click();

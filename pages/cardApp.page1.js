@@ -1,51 +1,41 @@
 import { applyZoom } from '../utils/zoomHelper';
 import { clearOverlays, waitForUiStable } from '../utils/uiHelper'; 
+import {
+  generateRandomFatherName,
+  generateRandomMotherName
+} from '../test-data/randomize.utils';
+
+import { getRandomFullName, generateRandomNumber } from '../test-data/randomize.utils';
 
 export async function fillCardAppPage1(page) {
+
+  const fullName = getRandomFullName();
+  const fatherName = generateRandomFatherName();
+  const motherName = generateRandomMotherName();
+  const randomContactNumber = generateRandomNumber(10);
 
   await page.getByRole('link', { name: 'Create Card Application' }).click();
   await page.locator('#mat-select-5').click();
   await page.getByRole('option', { name: 'Ms' }).click();
   
   /***************** Random Client name will be generated from here**************/  
-    function getRandomFullName() {
-    const firstNames = [
-      'Ashik', 'Rahim', 'Karim', 'Hasan', 'Mahmud', 'Rafi', 'Sabbir', 'Fahim',
-      'Nayeem', 'Tanvir', 'Imran', 'Arif', 'Sakib', 'Shakil', 'Arafat',
-      'Amina', 'Nusrat', 'Nabila', 'Sadia', 'Farzana', 'Jannat', 'Mim',
-      'Nadia', 'Sara', 'Tania', 'Ritu', 'Anika', 'Mehjabin',
-      'John', 'Michael', 'David', 'Alex', 'Daniel', 'James', 'Robert',
-      'Emily', 'Sophia', 'Olivia', 'Emma', 'Isabella', 'Mia'
-    ];
-
-    const lastNames = [
-      'Rahman', 'Islam', 'Khan', 'Ahmed', 'Hossain', 'Chowdhury', 'Mahmud',
-      'Miah', 'Sarker', 'Uddin', 'Sheikh', 'Alam', 'Bhuiyan',
-      'Smith', 'Johnson', 'Brown', 'Williams', 'Taylor', 'Anderson',
-      'Walker', 'Thompson', 'Harris'
-    ];
-
-    const first = firstNames[Math.floor(Math.random() * firstNames.length)];
-    const last = lastNames[Math.floor(Math.random() * lastNames.length)];
-
-    return `${first} ${last}`;
-  }
+  
 
   await page
     .getByRole('textbox', { name: 'Enter Full Name' })
-    .fill(getRandomFullName());
+    .fill(fullName);
 
   /***************** Random Client name generated**************/
   
-  await page.getByRole('textbox', { name: "Enter Father's Name" }).fill('Test'); //'Enter Father's Name'
-  await page.getByRole('textbox', { name: "Enter Mother's Name" }).fill('Testing'); //'Enter Mother's Name'
+  await page.getByRole('textbox', { name: "Enter Father's Name" }).fill(fatherName); //'Enter Father's Name'
+  await page.getByRole('textbox', { name: "Enter Mother's Name" }).fill(motherName); //'Enter Mother's Name'
   await page.getByRole('textbox', { name: 'Enter Occupation' }).fill('Intern'); //'Enter Occupation'
   
   //'Enter Personal Contact Number'
   await page
   .getByPlaceholder('Enter Number')
   .nth(0)              // choose the correct index
-  .fill('17236173');
+  .fill(randomContactNumber);
 
 
   //Date of Birth selection

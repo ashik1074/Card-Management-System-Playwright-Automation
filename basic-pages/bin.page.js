@@ -2,7 +2,7 @@ import { applyZoom } from '../utils/zoomHelper.js';
 import { clearOverlays, waitForUiStable } from '../utils/uiHelper.js';
 
 // ✅ Import schemeSelection + binData from test data
-import { schemeSelection, binData } from '../test-data/test.data.js';
+import { schemeSelection, binData } from '../test-data/schemeBinCardRange.data.js';
 
 // Creates a BIN
 export async function createBIN(page) {
@@ -51,6 +51,11 @@ export async function createBIN(page) {
   await page
     .getByPlaceholder('Enter BIN Value')
     .fill(binData.binValue);
+
+  await page.locator('div').filter({ hasText: /^EUR$/ }).first().click();
+
+  await page.getByRole('option', { name: binData.currency }).click();
+  
 
   await page.locator('mat-select[placeholder="Select BIN Type"]').click();      // open BIN Type dropdown
   await page.getByRole('option', { name: binData.binType }).click();            // ✅ BIN type from test data

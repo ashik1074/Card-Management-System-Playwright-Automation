@@ -1,5 +1,5 @@
 // Import scheme test data
-import { schemeData } from '../test-data/test.data';
+import { schemeData } from '../test-data/schemeBinCardRange.data.js';
 import { applyZoom } from '../utils/zoomHelper';
 
 

@@ -1,0 +1,13 @@
+{
+  "cardRangeName": "CUP Platinum Employee Standard",
+  "binValue": "600098",
+  "scheme": "China UnionPay Co., Ltd.",
+  "countryCode": "BGD",
+  "productType": "Prepaid",
+  "marketSegment": "Consumer",
+  "binCurrency": "BDT",
+  "binType": "Issuer BIN",
+  "settlementCurrency": "BDT",
+  "schemeLevel": "UnionPay Platinum",
+  "foreignCurrency": "Yes"
+}

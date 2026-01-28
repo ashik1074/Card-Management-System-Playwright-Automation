@@ -11,7 +11,7 @@ export const runConfig = {
   //                   ↓ 
 
 //>>>>>>>>>>>>>>>>>>>>>Input Only here<<<<<<<<<<<<<<<<<<<<<<<
-  activeEnvKey: 'bankingCms123', // 👈👈👈👈👈👈 Change only this when you want a different ASP
+  activeEnvKey: 'qa25', // 👈👈👈👈👈👈 Change only this when you want a different ASP
 //>>>>>>>>>>>>>>>>>>>>>Input Only here<<<<<<<<<<<<<<<<<<<<<<<
 
 

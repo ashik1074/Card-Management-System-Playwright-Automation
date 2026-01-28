@@ -1,6 +1,11 @@
-import { generateRandomIdNumber } from '../test-data/test.data.js';
+import { generateRandomIdNumber } from '../test-data/schemeBinCardRange.data.js';
+import { generateRandomFatherName, generateRandomMotherName } from '../test-data/randomize.utils.js';
 
 export async function fillCardAppPage4(page) {
+
+  const fatherName = generateRandomFatherName();
+  const motherName = generateRandomMotherName();
+
   //Photo ID selection and filling ID number
   await page.getByLabel('Nominee Information').getByText('Select Photo ID Type').click();
   await page.getByRole('option', { name: ' Passport ' }).click();
@@ -19,12 +24,12 @@ export async function fillCardAppPage4(page) {
   await page.getByRole('option', { name: 'Mr', exact: true }).click();
   //Filling nominee name
   await page.getByRole('textbox', { name: 'Enter Full Name' }).click();
-  await page.getByRole('textbox', { name: 'Enter Full Name' }).fill('ashikur r');
+  await page.getByRole('textbox', { name: 'Enter Full Name' }).fill(fatherName);
   //Filling father's and mother's name
   await page.getByRole('textbox', { name: 'Enter Father\'s Name' }).click();
-  await page.getByRole('textbox', { name: 'Enter Father\'s Name' }).fill('ashikur father');
+  await page.getByRole('textbox', { name: 'Enter Father\'s Name' }).fill(fatherName);
   await page.getByRole('textbox', { name: 'Enter Father\'s Name' }).press('Tab');
-  await page.getByRole('textbox', { name: 'Enter Mother\'s Name' }).fill('ashikur mother');
+  await page.getByRole('textbox', { name: 'Enter Mother\'s Name' }).fill(motherName);
 
   //Date selection
   await page.getByRole('button', { name: 'Open calendar' }).click();
@@ -37,7 +42,7 @@ export async function fillCardAppPage4(page) {
   await page.getByRole('option', { name: 'Male', exact: true }).click();
   //Nationality selection
   await page.getByRole('textbox', { name: 'Enter Nationality' }).click();
-  await page.getByRole('textbox', { name: 'Enter Nationality' }).fill('bengali');
+  await page.getByRole('textbox', { name: 'Enter Nationality' }).fill('Bangladeshi');
   //Relation selection
   await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(10) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
   await page.getByRole('option', { name: 'Spouse' }).click();
@@ -51,7 +56,7 @@ export async function fillCardAppPage4(page) {
   await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(14) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
   await page.getByRole('option', { name: 'Present Address' }).click();
   await page.getByRole('textbox', { name: 'Enter Address Line 1' }).click();
-  await page.getByRole('textbox', { name: 'Enter Address Line 1' }).fill('address line11');
+  await page.getByRole('textbox', { name: 'Enter Address Line 1' }).fill('Suite 405, Lake Plaza');
   //Radio button selection for allowing address for communication
   await page.getByRole('radio', { name: 'Yes' }).check();
   //Proceeding to next step

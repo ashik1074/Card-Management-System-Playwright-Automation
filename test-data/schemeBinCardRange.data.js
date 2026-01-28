@@ -66,6 +66,7 @@ export const binData = {
   marketSegment: 'Consumer', //👈👈👈👈👈 user selects Market Segment (dropdown)
   binType: 'Issuer BIN',     //👈👈👈👈👈 user selects BIN Type (dropdown)
   radioOption: 'No',         //👈👈👈👈👈 user selects Radio option (Yes/No)
+  currency: 'currency EUR Austria', //👈👈👈👈👈 user selects Currency (dropdown)
 
   binName: generateRandomBinName(),    // ✅ random every run
   binValue: generateRandomIdNumber(6), // ✅ random 6-digit BIN value every run
