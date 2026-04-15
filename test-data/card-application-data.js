@@ -12,11 +12,8 @@ function generateRandomId(length = 10) {
 export const cardApplicationData = {
   // ✅ User changes product + scheme here only
   productAndScheme: {
-
-
-
 //>>>>>>>>>>>>>>>>>>>>>>>>Input only here<<<<<<<<<<<<<<<<<<<<<<<
-    productName: 'D1', // 👈👈👈👈👈 Product to be selected from dropdown
+    productName: 'CUP Hero Elite', // 👈👈👈👈👈 Product to be selected from dropdown
     schemeName: 'UNION_PAY',            // 👈👈👈👈👈 Scheme to be selected from dropdown
 //>>>>>>>>>>>>>>>>>>>>>>>>Input only here<<<<<<<<<<<<<<<<<<<<<<<
 

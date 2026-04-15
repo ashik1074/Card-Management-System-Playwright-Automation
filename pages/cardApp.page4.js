@@ -1,5 +1,5 @@
 import { generateRandomIdNumber } from '../test-data/schemeBinCardRange.data.js';
-import { generateRandomFatherName, generateRandomMotherName } from '../test-data/randomize.utils.js';
+import { generateRandomFatherName, generateRandomMotherName, generateRandomNumber } from '../test-data/randomize.utils.js';
 
 export async function fillCardAppPage4(page) {
 
@@ -9,8 +9,7 @@ export async function fillCardAppPage4(page) {
   //Photo ID selection and filling ID number
   await page.getByLabel('Nominee Information').getByText('Select Photo ID Type').click();
   await page.getByRole('option', { name: ' Passport ' }).click();
-  //Enter Photo ID Number
-  //await page.getByRole('textbox', { name: 'Enter Photo ID Number' }).click(); 
+
    
   //Filling ID number
   const randomIdNumber2 = generateRandomIdNumber(10);
@@ -20,7 +19,8 @@ export async function fillCardAppPage4(page) {
     .getByRole('textbox', { name: 'Enter Photo ID Number' }) // locate field
     .fill(randomIdNumber2); 
  //Nominee Details
-  await page.locator('#mat-select-value-95').click();
+ //await page.pause();
+  await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(2) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper').click();
   await page.getByRole('option', { name: 'Mr', exact: true }).click();
   //Filling nominee name
   await page.getByRole('textbox', { name: 'Enter Full Name' }).click();
@@ -37,29 +37,47 @@ export async function fillCardAppPage4(page) {
   await page.getByRole('button', { name: '2004' }).click();
   await page.getByRole('button', { name: 'May' }).click();
   await page.getByRole('button', { name: 'May 2,' }).click();
+
+  //await page.pause();
   //Gender
-  await page.locator('#mat-select-value-96').click();
+  await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(7) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper').click();
   await page.getByRole('option', { name: 'Male', exact: true }).click();
-  //Nationality selection
-  await page.getByRole('textbox', { name: 'Enter Nationality' }).click();
-  await page.getByRole('textbox', { name: 'Enter Nationality' }).fill('Bangladeshi');
-  //Relation selection
-  await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(10) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
-  await page.getByRole('option', { name: 'Spouse' }).click();
+  await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(8) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
+  await page.getByRole('option', { name: 'Bangladeshi' }).click();
+  await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(10) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper').click();
+  await page.getByRole('option', { name: 'Other', exact: true }).click();
   //Percentage selection
   await page.getByRole('tabpanel', { name: 'Nominee Information' }).getByPlaceholder('Enter Percentage').click();
   await page.getByRole('tabpanel', { name: 'Nominee Information' }).getByPlaceholder('Enter Percentage').fill('100');
-  await page.getByRole('textbox', { name: 'Enter Personal Contact Number' }).click();
-  //Filling personal contact number
-  await page.getByRole('textbox', { name: 'Enter Personal Contact Number' }).fill('0123456789');
-  //Filling address details
-  await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(14) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
-  await page.getByRole('option', { name: 'Present Address' }).click();
+  await page.getByRole('textbox', { name: 'Enter Zip/Postal Code' }).fill(generateRandomIdNumber(5));
+
+  // await page.getByRole('textbox', { name: 'Enter Personal Contact Number' }).click();
+  // //Filling personal contact number
+  // await page.getByRole('textbox', { name: 'Enter Personal Contact Number' }).fill(generateRandomIdNumber(10));
+  // //Filling address details
+  // await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(14) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
+  // await page.getByRole('option', { name: 'Present Address' }).click();
+  // await page.getByRole('textbox', { name: 'Enter Address Line 1' }).click();
+  // await page.getByRole('textbox', { name: 'Enter Address Line 1' }).fill('Suite 405, Lake Plaza');
+  // //Radio button selection for allowing address for communication
+  // //await page.getByRole('radio', { name: 'Yes' }).check();
+  // //Proceeding to next step
+
+
+
   await page.getByRole('textbox', { name: 'Enter Address Line 1' }).click();
-  await page.getByRole('textbox', { name: 'Enter Address Line 1' }).fill('Suite 405, Lake Plaza');
-  //Radio button selection for allowing address for communication
-  await page.getByRole('radio', { name: 'Yes' }).check();
-  //Proceeding to next step
+  await page.getByRole('textbox', { name: 'Enter Address Line 1' }).fill('Shekhertek');
+  await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(16) > .row > formly-field:nth-child(3) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper').click();
+  await page.getByRole('option', { name: 'Bangladesh' }).click();
+  await page.locator('#cdk-stepper-0-content-3 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(2) > formly-group > formly-field > ksl-field-group-repeat > div > div > formly-field > formly-group > formly-field > .mb-15 > formly-field:nth-child(16) > .row > formly-field:nth-child(4) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper').click();
+  await page.getByRole('option', { name: 'Dhaka' }).click();
+  await page.getByRole('textbox', { name: 'Enter Thana' }).click();
+  await page.getByRole('textbox', { name: 'Enter Thana' }).fill('Adabor');
+  await page.getByRole('textbox', { name: 'Enter Zip/Postal Code' }).click();
+  await page.getByRole('textbox', { name: 'Enter Zip/Postal Code' }).fill(generateRandomNumber(5));
+  //await page.getByRole('textbox', { name: 'Enter Personal Contact Number' }).fill(generateRandomIdNumber(5));
+
+  await page.locator('input[placeholder="Enter Personal Contact Number"]:visible').fill('01712345678');
   await page.getByRole('button', { name: 'Next Step' }).click();
 
   //>>>>>>>>>>>>>>>> NO submit here<<<<<<<<<<<<<<<<<<<<<<<<<

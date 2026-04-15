@@ -29,28 +29,38 @@ export async function fillCardAppPage3(page) {
   // ✅ Material dropdown options appear in a global overlay (NOT inside page3)
   const overlay = page.locator('.cdk-overlay-container'); // global overlay container
 
-  // -------- Product selection --------
-  await page3.locator('#mat-select-value-61').click(); // open Product dropdown
+  await page
+  .getByLabel('Product & Bank Information')
+  .getByText('Select Product', { exact: true })
+  .click();
+  // const productDropdown = page3.getByRole('combobox').first();
+  // await expect(productDropdown).toBeVisible({ timeout: 10000 });
+  // await productDropdown.click();
+  //await overlay.getByRole('listbox').waitFor({ state: 'visible', timeout: 60000 });
 
-  // wait until dropdown options are rendered in overlay
-  await overlay.getByRole('listbox').waitFor({ state: 'visible', timeout: 60000 });
+  const productOption = page.getByRole('option', {
+  name: cardApplicationData.productAndScheme.productName,
+  exact: true,
+});
 
-  // click product option from overlay (NOT from page3)
-  await overlay.getByRole('option', {
-    name: cardApplicationData.productAndScheme.productName,
+  await expect(productOption).toBeVisible({ timeout: 10000 });
+  await productOption.click();
+
+  
+  const schemeDropdown = page
+  .getByLabel('Product & Bank Information')
+  .getByText('Select Scheme', { exact: true });
+
+  await expect(schemeDropdown).toBeVisible({ timeout: 10000 });
+  await schemeDropdown.click();
+
+  const schemeOption = page.getByRole('option', {
+    name: cardApplicationData.productAndScheme.schemeName,
     exact: true,
-  }).click();
+  });
 
-  // -------- Scheme selection --------
-  await page3.locator('#mat-select-value-62').click(); // open Scheme dropdown
-  await overlay.getByRole('listbox').waitFor({ state: 'visible', timeout: 60000 });
-
-  // await overlay.getByRole('option', {
-  //   name: cardApplicationData.productAndScheme.schemeName,
-  //   exact: true,
-  // }).click();
-
-  await overlay.getByRole('option').first().click();
+  await expect(schemeOption).toBeVisible({ timeout: 10000 });
+  await schemeOption.click();
 
   //******************* Other fields *********************/
 
@@ -58,17 +68,19 @@ export async function fillCardAppPage3(page) {
   await page3.getByRole('textbox', { name: 'Enter Embossing Name' }).fill(getRandomFullName().toUpperCase());
 
   // Filling annual income (radio checks)
-  await page3.locator('#mat-radio-19-input').check();
-  await page3.locator('#mat-radio-21-input').check();
+  // await page3.locator('#mat-radio-19-input').check();
+  // await page3.locator('#mat-radio-21-input').check();
+
 
   // Branch selection (also a mat-select overlay)
-  await page3.locator('#mat-select-value-63').click();
-  await overlay.getByRole('listbox').waitFor({ state: 'visible', timeout: 60000 });
-  await overlay.getByRole('option', { name: 'Banani Branch', exact: true }).click();
+  const branchDropdown = await page.getByLabel('Product & Bank Information').getByText('Select Branch', { exact: true });
+  await expect(branchDropdown).toBeVisible({ timeout: 10000 });
+  await branchDropdown.click();
 
-  // (Kept) focus optional input (if required by UI)
+  await page.getByRole('option', { name: 'Mirpur Branch' }).click(); // Selecting Mirpur Branch as an example
 
-  // Date selection
+
+  // Application Date selection
   await page.getByRole('textbox', { name: 'Select Application Date' }).click();
   await page.getByRole('button', { name: 'Choose month and year' }).click();
   await page.getByRole('button', { name: '2025' }).click();
@@ -77,6 +89,18 @@ export async function fillCardAppPage3(page) {
 
   // Filling role
   await page3.getByRole('textbox', { name: 'Enter Role' }).fill('Executive');
+
+  //await page.locator('#cdk-stepper-0-content-2 > .step-content > .stepper-form > formly-form > formly-field > formly-group > formly-field:nth-child(3) > .mb-4.row > formly-field:nth-child(4) > formly-field-ksl-select > .d-grid > .mat-mdc-form-field > .mat-mdc-text-field-wrapper').click();
+  
+  const issuancePriorityDropdown = page
+  .getByLabel('Product & Bank Information')
+  .getByText('Select Issuance Priority', { exact: true });
+
+  await expect(issuancePriorityDropdown).toBeVisible({ timeout: 10000 });
+  await issuancePriorityDropdown.click();
+  
+  await page.getByRole('option', { name: 'Regular' }).click();
+  //await page.pause();
 
   // Proceeding to next step
   await page3.getByRole('button', { name: 'Next Step' }).click();

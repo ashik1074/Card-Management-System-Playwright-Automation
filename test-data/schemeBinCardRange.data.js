@@ -6,7 +6,7 @@
    ========================================================= */
 
 export const schemeData = {
-  schemeName: 'metronic China UnionPay Co.,', // 👈👈👈👈👈 USER changes this value only
+  schemeName: 'metronic China UnionPay Co.,', // 👈👈👈👈👈 USER changes this value and 
   //Other Options:
   //               - metronic Visa U.S.A Inc. V001
   //               - metronic Mastercard

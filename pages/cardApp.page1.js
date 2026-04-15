@@ -14,10 +14,17 @@ export async function fillCardAppPage1(page) {
   const motherName = generateRandomMotherName();
   const randomContactNumber = generateRandomNumber(10);
 
-  await page.getByRole('link', { name: 'Create Card Application' }).click();
-  await page.locator('#mat-select-5').click();
-  await page.getByRole('option', { name: 'Ms' }).click();
-  
+  //await page.pause();
+  // await page.locator('.fuse-vertical-navigation-item.menu-link.ng-tns-c1507090251-16').click();
+  // await page.getByRole('link', { name: 'Application List' }).click();
+  await page.locator('span').filter({ hasText: /^Card Application$/ }).click();
+  await page.getByRole('link', { name: 'New Application' }).click();
+  //await page.getByRole('link', { name: 'New Application' }).click();
+  //await page.pause();
+  // await page.locator('#mat-select-5').click();
+  // await page.getByRole('option', { name: 'Ms' }).click();
+  await page.locator('div').filter({ hasText: /^Select Title$/ }).nth(2).click();
+  await page.getByRole('option', { name: 'Mr', exact: true }).click();
   /***************** Random Client name will be generated from here**************/  
   
 
@@ -44,29 +51,31 @@ export async function fillCardAppPage1(page) {
   await page.getByRole('button', { name: '2003' }).click();
   await page.getByRole('button', { name: 'January' }).click();
   await page.getByRole('button', { name: 'January 6,' }).click();
+  //await page.pause();
 
-  await page.locator('#mat-select-value-6').click(); //Gender
-  await page.getByRole('option', { name: 'Male', exact: true }).click(); //Selecting
+  await page.locator('div').filter({ hasText: /^Select Marital Status$/ }).nth(2).click();
+  await page.getByRole('option', { name: 'Single' }).click();
+  await page.locator('div').filter({ hasText: /^Select Gender$/ }).nth(2).click();
+  await page.getByRole('option', { name: 'Male', exact: true }).click();
 
-  await page.getByRole('textbox', { name: 'Enter Nationality' }).click(); //Enter Nationality
-  await page.getByRole('textbox', { name: 'Enter Nationality' }).fill('Bangladeshi'); //Filling National
-  
-  await page.locator('#mat-select-value-7').click(); //Marital Status
-  await page.getByText('Single').click(); //Selecting
+  await page.locator('div').filter({ hasText: /^Enter Nationality$/ }).nth(2).click();
+  await page.getByRole('option', { name: 'Bangladeshi' }).click();
+
+  // await page.locator('div').filter({ hasText: /^Select Marital Status$/ }).nth(2).click();
+  // await page.getByRole('option', { name: 'Single' }).click();
   
   await page.locator('div').filter({ hasText: /^Select Religion$/ }).nth(2).click(); //Religion
   await page.getByRole('option', { name: 'Islam' }).click(); //Selecting
+
 
   //Filling emergency Contact Number
     await page
   .getByPlaceholder('Enter Number')
   .nth(1)              // choose the correct index
   .fill('17236173');
-  
-  await page.getByRole('textbox', { name: 'Enter Email' }).click(); //Email
-  await page.getByRole('textbox', { name: 'Enter Email' }).fill('jayed_email@yopmail.com'); //Filling Email
 
-  await page.getByRole('checkbox', { name: 'Same as Email' }).check(); //Checkbox selection for communication email
+  await page.getByPlaceholder('Enter Email').nth(0).fill('jayed_email@yopmail.com'); //Filling email
+
   await page.getByRole('button', { name: 'Next Step' }).click(); //Proceeding to next step
 
 }

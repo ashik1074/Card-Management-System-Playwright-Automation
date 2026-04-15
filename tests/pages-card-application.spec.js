@@ -21,6 +21,7 @@ test('Card Application End-to-End', async ({ page }) => {
   await fillCardAppPage3(page); //Product & Bank Information of Card Application
   await fillCardAppPage4(page); //Nominee Information of Card Application
   await submitApplication(page); //Preview and Submit the Card Application
+  
 
 
   //To Pause the test for debugging, place it after the function where needed.  
