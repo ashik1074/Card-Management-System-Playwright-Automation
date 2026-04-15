@@ -67,7 +67,7 @@ await page
   // await page.locator('#mat-input-114').fill('3500');
   await page.getByRole('radio', { name: 'Residence Address' }).check();
 
-  await page.locator('input[placeholder="Enter Zip/Postal Code"]:visible').last().fill('3500');
+  await page.locator('input[placeholder="Enter Zip/Postal Code"]:visible').last().fill(generateRandomIdNumber(5));
   
   //await page.pause();
 
