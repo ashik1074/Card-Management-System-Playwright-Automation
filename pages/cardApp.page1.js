@@ -1,4 +1,5 @@
 import { applyZoom } from '../utils/zoomHelper';
+import { cardApplicationData } from '../test-data/card-application-data';
 import { clearOverlays, waitForUiStable } from '../utils/uiHelper'; 
 import {
   generateRandomFatherName,
@@ -17,9 +18,9 @@ export async function fillCardAppPage1(page) {
   //await page.pause();
   // await page.locator('.fuse-vertical-navigation-item.menu-link.ng-tns-c1507090251-16').click();
   // await page.getByRole('link', { name: 'Application List' }).click();
-  await page.locator('span').filter({ hasText: /^Card Application$/ }).click();
+  await page.locator('span').filter({ hasText: /^Card Applications$/ }).click();
+  await page.getByRole('link', { name: cardApplicationData.productAndScheme.cardType }).click();
   await page.getByRole('link', { name: 'New Application' }).click();
-  //await page.getByRole('link', { name: 'New Application' }).click();
   //await page.pause();
   // await page.locator('#mat-select-5').click();
   // await page.getByRole('option', { name: 'Ms' }).click();
@@ -31,6 +32,8 @@ export async function fillCardAppPage1(page) {
   await page
     .getByRole('textbox', { name: 'Enter Full Name' })
     .fill(fullName);
+
+    console.log('Submitting application for:', fullName); // Log the generated name to console
 
   /***************** Random Client name generated**************/
   

@@ -11,7 +11,7 @@ export async function login(page) {
     );
   }
 
-  const targetUrl = `${env.baseUrl}/card-apps/app/list`; // ✅ app URL (will redirect to login if not logged in)
+  const targetUrl = `${env.baseUrl}/auth/login`; // ✅ app URL (will redirect to login if not logged in)
 
   await page.goto(targetUrl, { waitUntil: 'domcontentloaded' }); // open page
 

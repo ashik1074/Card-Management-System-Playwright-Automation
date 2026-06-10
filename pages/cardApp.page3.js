@@ -46,6 +46,7 @@ export async function fillCardAppPage3(page) {
   await expect(productOption).toBeVisible({ timeout: 10000 });
   await productOption.click();
 
+  await page.waitForTimeout(1000);
   
   const schemeDropdown = page
   .getByLabel('Product & Bank Information')
@@ -65,7 +66,7 @@ export async function fillCardAppPage3(page) {
   //******************* Other fields *********************/
 
   // Filling embossing name
-  await page3.getByRole('textbox', { name: 'Enter Embossing Name' }).fill(getRandomFullName().toUpperCase());
+  await page3.getByRole('textbox', { name: 'Enter Name' }).fill(getRandomFullName().toUpperCase());
 
   // Filling annual income (radio checks)
   // await page3.locator('#mat-radio-19-input').check();
@@ -101,6 +102,11 @@ export async function fillCardAppPage3(page) {
   
   await page.getByRole('option', { name: 'Regular' }).click();
   //await page.pause();
+
+
+  await page.getByRole('radio', { name: 'Yes' }).check();
+  await page.getByLabel('Product & Bank Information').getByText('Select Delivery Method').click();
+  await page.getByRole('option', { name: 'Communication Address' }).click();
 
   // Proceeding to next step
   await page3.getByRole('button', { name: 'Next Step' }).click();

@@ -43,19 +43,18 @@ export function generateRandomMotherName() {
     const firstNames = [
       'Ashik', 'Rahim', 'Karim', 'Hasan', 'Mahmud', 'Rafi', 'Sabbir', 'Fahim',
       'Nayeem', 'Tanvir', 'Imran', 'Arif', 'Sakib', 'Shakil', 'Arafat',
-      'Amina', 'Nusrat', 'Nabila', 'Sadia', 'Farzana', 'Jannat', 'Mim',
-      'Nadia', 'Sara', 'Tania', 'Ritu', 'Anika', 'Mehjabin',
-      'John', 'Michael', 'David', 'Alex', 'Daniel', 'James', 'Robert',
-      'Emily', 'Sophia', 'Olivia', 'Emma', 'Isabella', 'Mia'
+      'Sabbir', 'Riasat', 'Dhruba', 'Parvez', 'Zahid', 'Rakib', 'Amin',
+      'Abir', 'Rahil', 'Robiul', 'Rafid', 'Hamza', 'Mahin',
+      'Jaber', 'Muhammad', 'Rashid', 'Karim', 'Zawher', 'Samiul', 'Rayhan',
+      'Abdul', 'Tariq', 'Alvee', 'Nazmul', 'Musa', 'Mokbul'
     ];
 
     const lastNames = [
       'Rahman', 'Islam', 'Khan', 'Ahmed', 'Hossain', 'Chowdhury', 'Mahmud',
       'Miah', 'Sarker', 'Uddin', 'Sheikh', 'Alam', 'Bhuiyan',
-      'Smith', 'Johnson', 'Brown', 'Williams', 'Taylor', 'Anderson',
-      'Walker', 'Thompson', 'Harris'
+      'Malik', 'Ali', 'Hasan', 'Ansari', 'Farooq', 'Uddin',
+      'Sorkar', 'Qureshi', 'Karim'
     ];
-
     const first = firstNames[Math.floor(Math.random() * firstNames.length)];
     const last = lastNames[Math.floor(Math.random() * lastNames.length)];
 
