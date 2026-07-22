@@ -63,14 +63,12 @@ export async function fillCardAppPage3(page) {
   await expect(schemeOption).toBeVisible({ timeout: 10000 });
   await schemeOption.click();
 
+
   //******************* Other fields *********************/
 
   // Filling embossing name
-  await page3.getByRole('textbox', { name: 'Enter Name' }).fill(getRandomFullName().toUpperCase());
-
-  // Filling annual income (radio checks)
-  // await page3.locator('#mat-radio-19-input').check();
-  // await page3.locator('#mat-radio-21-input').check();
+  await page.getByRole('checkbox', { name: 'Same as Full Name' }).check();
+  //await page3.getByRole('textbox', { name: 'Enter Name' }).fill(getRandomFullName().toUpperCase());
 
 
   // Branch selection (also a mat-select overlay)
@@ -108,6 +106,9 @@ export async function fillCardAppPage3(page) {
   await page.getByLabel('Product & Bank Information').getByText('Select Delivery Method').click();
   await page.getByRole('option', { name: 'Communication Address' }).click();
 
+  //await page.pause();
+
   // Proceeding to next step
-  await page3.getByRole('button', { name: 'Next Step' }).click();
+  await page.getByRole('button', { name: 'Next Step' }).click();
+  //await page3.getByRole('button', { name: 'Next Step' }).click();
 }

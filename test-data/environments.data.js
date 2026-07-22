@@ -13,11 +13,12 @@ export const runConfig = {
   //Standard Chartered Bank Bangladesh = scb_bd
   //Eastern Bank Limited Bangladesh = ebl_bd
   //CMS Dev = devEnv
+  //KonaCmsStage
 
   //Place your ASP key from above list to here
   //                   ↓ 
 //>>>>>>>>>>>>>>>>>>>>>Input Only here<<<<<<<<<<<<<<<<<<<<<<<
-  activeEnvKey: 'devEnv', // 👈👈👈👈👈👈 Change only this when you want a different ASP
+  activeEnvKey: 'ebl_bd', // 👈👈👈👈👈👈 Change only this when you want a different ASP
 //>>>>>>>>>>>>>>>>>>>>>Input Only here<<<<<<<<<<<<<<<<<<<<<<<
 
 };
@@ -107,7 +108,21 @@ export const environments = {
     email: 'next-gen-admin@yopmail.com',
     password: 'Konasl@@1234',
   },
+
+
+  KonaCmsStage: {
+    name: 'next-gen-05',
+    baseUrl: 'https://konacms-stg.konasl.net:10443',
+    email: 'cs.officer@yopmail.com',
+    password: 'KonaCMS!234',
+  },
+
+
+
 };
+
+
+
 
 // ---------------- Other test data example (keep yours here) ----------------
 export const cardAppData = {

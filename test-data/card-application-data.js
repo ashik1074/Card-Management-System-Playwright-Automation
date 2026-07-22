@@ -1,5 +1,4 @@
 // Centralized test data for Card Application (Product & Scheme info)
-
 // 🔁 Utility function to generate random numeric IDs
 function generateRandomId(length = 10) {
   let result = '';
@@ -9,19 +8,44 @@ function generateRandomId(length = 10) {
   return result;
 }
 
+
+
 export const cardApplicationData = {
   // ✅ User changes product + scheme here only
   productAndScheme: {
 //>>>>>>>>>>>>>>>>>>>>>>>>Input only here<<<<<<<<<<<<<<<<<<<<<<<
-    productName: 'Employee Card', // 👈👈👈👈👈 Product to be selected from dropdown
-    schemeName: 'Visa',            // 👈👈👈👈👈 Scheme to be selected from dropdown
+    productName: 'Feewise Product', // 👈👈👈👈👈 Product to be selected from dropdown
+    schemeName: 'Union Pay',            // 👈👈👈👈👈 Scheme to be selected from dropdown
     cardType: 'Prepaid Cards',           // 👈👈👈👈👈 Card Type to be selected from dropdown (if applicable)
 //>>>>>>>>>>>>>>>>>>>>>>>>Input only here<<<<<<<<<<<<<<<<<<<<<<<
 
 // Sample Card Types: Prepaid Cards | Credit Cards | Debit Cards
 // Sample Scheme Options: MASTERCARD | VISA | UNION_PAY | AMEX
-// Sample Product Options:  Exclusive Platinum Card | Arekta Product | January 2026 Product Launch
+// Sample Product Options:  Exclusive Platinum Card | Prepaid Commercial | January 2026 Product Launch | Feewise Product
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ✅ Random IDs auto-generate on every run
   references: {

@@ -56,13 +56,19 @@ export async function fillCardAppPage1(page) {
   await page.getByRole('button', { name: 'January 6,' }).click();
   //await page.pause();
 
+
+      await page.getByRole('textbox', { name: 'Enter CIF ID' }).click();
+    await page.getByRole('textbox', { name: 'Enter CIF ID' }).fill('093450938');
+
   await page.locator('div').filter({ hasText: /^Select Marital Status$/ }).nth(2).click();
   await page.getByRole('option', { name: 'Single' }).click();
   await page.locator('div').filter({ hasText: /^Select Gender$/ }).nth(2).click();
   await page.getByRole('option', { name: 'Male', exact: true }).click();
 
-  await page.locator('div').filter({ hasText: /^Enter Nationality$/ }).nth(2).click();
-  await page.getByRole('option', { name: 'Bangladeshi' }).click();
+
+  await page.getByLabel('Applicant Details').getByText('Enter Nationality').click();
+    await page.getByRole('option', { name: 'Bangladeshi' }).click();
+
 
   // await page.locator('div').filter({ hasText: /^Select Marital Status$/ }).nth(2).click();
   // await page.getByRole('option', { name: 'Single' }).click();
@@ -77,7 +83,7 @@ export async function fillCardAppPage1(page) {
   .nth(1)              // choose the correct index
   .fill('17236173');
 
-  await page.getByPlaceholder('Enter Email').nth(0).fill('jayed_email@yopmail.com'); //Filling email
+  await page.getByPlaceholder('Enter Email').nth(0).fill('useremail.ksl@yopmail.com'); //Filling email
 
   await page.getByRole('button', { name: 'Next Step' }).click(); //Proceeding to next step
 

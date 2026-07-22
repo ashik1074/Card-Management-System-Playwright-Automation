@@ -9,11 +9,11 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
+    "@playwright/test": "^1.61.0",
     "@types/node": "^24.10.1"
   },
   "dependencies": {
-    "exceljs": "^4.4.0",
+    "exceljs": "^3.4.0",
     "pg": "^8.17.2",
     "xlsx": "^0.18.5"
   }
